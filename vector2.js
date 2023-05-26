@@ -1,5 +1,5 @@
 class Vector2 {
-	constructor( point = {x:100, y:0},sp = {x:0,y:0}) {
+	constructor( point = {x: 100, y: 0}, sp = {x: 0, y: 0}) {
 		this.x = point.x || 0;
 		this.y = point.y || 0;
 
@@ -11,17 +11,17 @@ class Vector2 {
 	}
 	
 	setStartPos(a) {
-		return new Vector2(this,{x:a.x,y:a.y})
+		return new Vector2(this, {x: a.x, y: a.y})
 	}
 
 	setAng(a) {
 		this.rotate = a
-		this.x = this.len*Math.cos(a)
-		this.y = this.len*Math.sin(a)
+		this.x = this.len * Math.cos(a)
+		this.y = this.len * Math.sin(a)
 	}
 
-	getAng(b={x:1,y:0}) {
-		return Math.atan2(this.y-b.y, this.x-b.x)
+	getAng(b = {x: 1, y: 0}) {
+		return Math.atan2(this.y - b.y, this.x - b.x)
 	}
 
 	addAng(a) {
@@ -29,7 +29,7 @@ class Vector2 {
 	}
 
 	setAngN(a) {
-		return new Vector2({x:this.len*Math.cos(a),y:this.len*Math.sin(a)})
+		return new Vector2({x: this.len * Math.cos(a), y: this.len * Math.sin(a)})
 	}
 
 	add (b) { // Cумма векторов
@@ -52,11 +52,11 @@ class Vector2 {
  		return this.x * b.x + this.y * b.y
  	};
 
- 	length(b=this)  {
+ 	length(b = this)  {
  		return Math.sqrt(b.x * b.x + b.y * b.y)
  	};
 
- 	norm()  {
- 		return new Vector2({x:this.x / this.len, y:this.y / this.len})
+ 	norm() {
+ 		return new Vector2({x: this.x / this.len, y: this.y / this.len})
  	};
 }

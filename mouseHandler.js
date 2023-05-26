@@ -26,7 +26,7 @@ KEY IDs:
 
 class MouseHandler {
 	constructor (obj) {
-		obj.tabIndex<0?obj.tabIndex=0:""
+		obj.tabIndex < 0 ? obj.tabIndex = 0 : ""
 		this.obj = obj
 		this.obj.mouseHandler = {}
 		this.obj.mouseHandler.events = []
@@ -40,38 +40,38 @@ class MouseHandler {
 
 	tick(handler) {
 		var h = handler.obj.mouseHandler
-		for(let i = 0; i<h.events.length;i++ ) {
+		for(let i = 0; i < h.events.length; i++) {
 			let find = h.pressed[h.events[i].key]
 			if(find) {
-				h.events[i].func({x:h.x,y:h.y})
+				h.events[i].func({x: h.x, y: h.y})
 			}
 		}
 	}
 
 	addEventMouseMove(callback) {
-		this.obj.addEventListener("mousemove",callback)
+		this.obj.addEventListener("mousemove", callback)
 	}
 
-	addEventMouseDown(key,callback) {
-		this.obj.addEventListener("mousedown",(event)=>{
-			setTimeout(()=>{if((event.button == key) || (key == -1)) callback(event)},1)
+	addEventMouseDown(key, callback) {
+		this.obj.addEventListener("mousedown", (event) => {
+			setTimeout(() => { if((event.button == key) || (key == -1)) callback(event)}, 1)
 
 		})
 	}
 
-	addEventMouseUp(key,callback) {
-		this.obj.addEventListener("mouseup",(event)=>{
+	addEventMouseUp(key, callback) {
+		this.obj.addEventListener("mouseup", (event)=>{
 			if((event.button == key) || (key == -1)) callback(event)
 		})
 	}
 
 	addEventDoubleClick(key,callback) {
-		this.addEventMouseDown(key,(event)=>{
+		this.addEventMouseDown(key, (event)=>{
 
-			this.obj.mouseHandler.clicks+=1
-			if(this.obj.mouseHandler.clicks>1) callback(event)
+			this.obj.mouseHandler.clicks += 1
+			if(this.obj.mouseHandler.clicks > 1) callback(event)
 
-			this.obj.mouseHandler.timer = setTimeout(()=>{this.obj.mouseHandler.clicks=0;this.obj.mouseHandler.timer = null},500)
+			this.obj.mouseHandler.timer = setTimeout(() => {this.obj.mouseHandler.clicks = 0; this.obj.mouseHandler.timer = null}, 500)
 		})
 	}
 
@@ -81,11 +81,11 @@ class MouseHandler {
 			this.obj.mouseHandler.y = event.offsetY
 		})
 
-		this.obj.addEventListener("mousedown",(event)=>{
+		this.obj.addEventListener("mousedown", (event) => {
 			this.obj.mouseHandler.pressed[event.button] = true
 		})
 		
-		this.obj.addEventListener("mouseup",(event)=>{
+		this.obj.addEventListener("mouseup", (event) => {
 			this.obj.mouseHandler.pressed[event.button] = false
 		})
 

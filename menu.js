@@ -1,5 +1,3 @@
-///////////////////////////////////////////////////////////
-
 class Menu {
 	constructor(pos, size, name, mouseHandler) {
 		this.name = name
@@ -18,20 +16,20 @@ class Menu {
 		}
 	}
 
-	addPunkt(text,callback) {
-		this.punkts.push(new MenuPunkt(text,callback,this,this.punkts.length))
+	addPunkt(text, callback) {
+		this.punkts.push(new MenuPunkt(text, callback, this, this.punkts.length))
 	}
 
 	resize() {
 		this.punktSize = {
 			width: this.width,
 			//////// MENU HEIGHT - HEADER HEIGHT   /               punkts count
-			height: (this.height - this.titleHeight ) / (this.punkts.length!=0?this.punkts.length:1)
+			height: (this.height - this.titleHeight ) / (this.punkts.length != 0 ? this.punkts.length : 1)
 		}
 
 		this.fontSize = Math.min(this.fontSize, Math.floor(this.punktSize.height))
 
-		for(var i = 0;i<this.punkts.length;i++ ) {
+		for(var i = 0; i < this.punkts.length; i++ ) {
 			this.punkts[i].resize(this.punktSize)
 		}
 	}
@@ -47,8 +45,8 @@ class MenuPunkt {
 		this.mouseHandler = menu.mouseHandler
 		this.parent = menu
 
-		this.mouseHandler.addEventMouseDown(0,(event)=>{
-			if(intersection(event,this,this)) {
+		this.mouseHandler.addEventMouseDown(0, (event) => {
+			if(intersection(event, this, this)) {
 				this.callback()
 			}
 		})
